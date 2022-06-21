@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import React, { Component } from 'react';
 import Clarifai from 'clarifai';
 
@@ -21,20 +22,23 @@ class App extends Component {
     super();
     this.state = {
       input: '',
+      imageUrl: '',
     };
   }
 
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({ input: event.target.value });
   };
 
   onButtonSubmit = () => {
-    console.log('click');
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, 'https://i.insider.com/5d321d4ea209d3146d650b4a?width=1100&format=jpeg&auto=webp').then({
-      function(response) {
-        console.log(response);
-      },
-    });
+    this.setState({ imageUrl: this.state.input });
+    app.models
+      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      .then(function (response) {
+        console.log(
+          response.outputs[0].data.regions[0].region_info.bounding_box
+        );
+      });
   };
 
   render() {
@@ -47,7 +51,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        {/* <FaceRecognition /> */}
+        <FaceRecognition imageUrl={this.state.imageUrl} />
       </div>
     );
   }
