@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Register = ({ onRouteChange }) => {
   return (
@@ -52,7 +52,7 @@ const Register = ({ onRouteChange }) => {
         </div>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

@@ -1,5 +1,5 @@
-import React from 'react';
-import './FaceRecognition.css';
+import React from 'react'
+import './FaceRecognition.css'
 
 const FaceRecognition = ({ imageUrl, box }) => {
   return (
@@ -23,7 +23,7 @@ const FaceRecognition = ({ imageUrl, box }) => {
         ></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FaceRecognition;
+export default FaceRecognition

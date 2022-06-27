@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Rank = () => {
   return (
@@ -6,7 +6,7 @@ const Rank = () => {
       <div className="white f3">{'Tony, your current rank is...'}</div>
       <div className="white f1">{'#5'}</div>
     </div>
-  );
-};
+  )
+}
 
-export default Rank;
+export default Rank
